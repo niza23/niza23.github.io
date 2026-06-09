@@ -3,78 +3,92 @@ import { motion } from "framer-motion";
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex flex-col justify-center px-4 max-w-5xl mx-auto pt-20 pb-12">
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center w-full">
+    <section className="relative min-h-screen flex flex-col justify-center px-4 max-w-6xl mx-auto pt-24 pb-12 z-10">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center w-full">
         
-        <div className="lg:col-span-7 flex flex-col items-start text-left">
+        {/* Left Content */}
+        <div className="flex flex-col items-start text-left relative z-20">
           <motion.div 
-            initial={{ opacity: 0, y: -10 }}
+            initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-gray-900/60 border border-gray-800 text-xs text-cyanNeon font-mono mb-6 backdrop-blur-md"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-bento text-xs font-semibold text-sky-400 tracking-wide mb-8"
           >
-            <span className="w-2 h-2 rounded-full bg-cyanNeon animate-pulse" />
-            Kubernetes & Cloud Infrastructure Node
+            <span className="w-2 h-2 rounded-full bg-sky-400 animate-pulse shadow-[0_0_10px_#38bdf8]" />
+            Site Reliability Engineer | Cloud Infra
           </motion.div>
 
           <motion.h1 
-            initial={{ opacity: 0, y: 15 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="text-4xl md:text-6xl font-black tracking-tight text-white mb-6 leading-[1.15]"
+            className="text-5xl md:text-7xl font-extrabold tracking-tight text-white mb-6 leading-[1.1]"
           >
-            Hi, I'm Nidhi Zala.<br />
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-cyanNeon via-blue-400 to-indigo-500">
-              Site Reliability Engineer.
+            Keeping Production <br />
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-sky-400 via-indigo-400 to-emerald-400">
+              Reliable at Scale.
             </span>
           </motion.h1>
 
           <motion.p 
-            initial={{ opacity: 0, y: 15 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="text-base text-gray-400 mb-8 leading-relaxed max-w-xl"
+            className="text-lg text-slate-400 mb-10 leading-relaxed max-w-xl font-light"
           >
-            Main production-grade cloud infrastructure (AWS) ko design, scale aur automate karti hu. Mera focus manual toil ko eliminate karna, Kubernetes clusters ko manage karna aur 99.9% uptime ensure karna hai. Let's build reliable systems together.
+            I build resilient cloud infrastructure, automate complex operations, improve platform reliability, and help engineering teams move faster with absolute confidence.
           </motion.p>
 
-          {/* Interactive Buttons */}
           <motion.div 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.3 }}
-            className="flex flex-wrap gap-4 mb-10 w-full"
+            className="flex flex-wrap gap-5"
           >
-            {/* Interactive "Send me a message" Mailto Link */}
-            <a href="mailto:nidhizala2307@gmail.com?subject=Hello%20Nidhi!&body=I%20saw%20your%20portfolio%20and%20would%20love%20to%20connect." 
-               className="px-6 py-3 rounded-lg bg-cyanNeon text-white font-semibold text-sm hover:bg-cyanNeon/80 transition-all shadow-[0_0_15px_rgba(14,165,233,0.3)] flex items-center gap-2">
-              <span>✉️</span> Send me a message
-            </a>
-            <a href="https://www.linkedin.com/in/nidhi-zala-2307/" target="_blank" rel="noreferrer" 
-               className="px-6 py-3 rounded-lg bg-gray-900 border border-gray-700 text-white font-semibold text-sm hover:border-cyanNeon transition-all flex items-center gap-2">
-              <span>💼</span> LinkedIn Profile
-            </a>
-            <a href="https://github.com/niza23" target="_blank" rel="noreferrer" 
-               className="px-6 py-3 rounded-lg bg-gray-900 border border-gray-700 text-white font-semibold text-sm hover:border-cyanNeon transition-all flex items-center gap-2">
-              <span>💻</span> GitHub
+            <button onClick={() => document.getElementById('projects')?.scrollIntoView({behavior: 'smooth'})} 
+               className="px-8 py-3.5 rounded-xl bg-sky-500 text-white font-bold text-sm hover:bg-sky-400 transition-all shadow-[0_0_20px_rgba(56,189,248,0.4)]">
+              View Architecture
+            </button>
+            <a href="mailto:nidhizala2307@gmail.com" 
+               className="px-8 py-3.5 rounded-xl glass-bento text-white font-bold text-sm transition-all hover:-translate-y-1">
+              Contact Me
             </a>
           </motion.div>
         </div>
 
-        {/* Right Side Cloud Visual */}
-        <div className="lg:col-span-5 w-full flex justify-center">
-          <motion.div 
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.3 }}
-            className="w-full max-w-sm aspect-square bg-gray-900/50 rounded-full border border-gray-800 flex items-center justify-center relative overflow-hidden shadow-[0_0_50px_rgba(14,165,233,0.1)]"
-          >
-             <div className="text-center p-6">
-                <div className="text-6xl mb-4 animate-bounce">☸️</div>
-                <h3 className="text-lg font-mono text-cyanNeon font-bold mb-2">Cluster Architecture</h3>
-                <p className="text-xs text-gray-500 font-mono">Automating AWS, EKS, and GitOps Workflows</p>
-             </div>
-          </motion.div>
-        </div>
+        {/* Right Content - CSS Isometric Graphic (Replacing the static image) */}
+        <motion.div 
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 0.4, duration: 0.7 }}
+          className="relative w-full h-[500px] flex items-center justify-center group perspective-[1000px] z-10"
+        >
+          {/* Glowing Orb Background */}
+          <div className="absolute inset-0 bg-sky-500/20 rounded-full blur-[100px]" />
+          
+          <div className="isometric-grid relative w-64 h-64">
+            {/* Base Layer - AWS/Cloud Platform */}
+            <div className="isometric-layer isometric-layer-1 absolute inset-0 bg-slate-800/80 border-2 border-slate-600 rounded-2xl shadow-[20px_20px_40px_rgba(0,0,0,0.5)] flex items-center justify-center backdrop-blur-md">
+              <span className="text-4xl transform -rotate-z-45 rotate-x-60">☁️</span>
+            </div>
+            
+            {/* Middle Layer - Kubernetes Nodes */}
+            <div className="isometric-layer isometric-layer-2 absolute inset-0 -top-8 -left-8 bg-indigo-900/60 border-2 border-indigo-400/50 rounded-2xl shadow-[20px_20px_40px_rgba(0,0,0,0.5)] flex items-center justify-center backdrop-blur-md">
+              <span className="text-5xl transform -rotate-z-45 rotate-x-60 drop-shadow-[0_0_15px_rgba(129,140,248,0.8)]">☸️</span>
+            </div>
+            
+            {/* Top Layer - Application Code */}
+            <div className="isometric-layer isometric-layer-3 absolute inset-0 -top-16 -left-16 bg-sky-900/60 border-2 border-sky-400/50 rounded-2xl shadow-[20px_20px_40px_rgba(0,0,0,0.5)] flex items-center justify-center backdrop-blur-md">
+              <span className="text-5xl transform -rotate-z-45 rotate-x-60 font-mono font-black text-sky-300">{"</>"}</span>
+            </div>
+          </div>
+
+          {/* Floating Badges */}
+          <div className="absolute -bottom-10 right-0 flex gap-4 bg-slate-900/80 p-3 rounded-2xl border border-slate-700 backdrop-blur-xl">
+            <span className="px-3 py-1 bg-orange-500/20 text-orange-400 rounded-lg text-xs font-bold border border-orange-500/30">AWS</span>
+            <span className="px-3 py-1 bg-blue-500/20 text-blue-400 rounded-lg text-xs font-bold border border-blue-500/30">K8S</span>
+            <span className="px-3 py-1 bg-purple-500/20 text-purple-400 rounded-lg text-xs font-bold border border-purple-500/30">Terraform</span>
+          </div>
+        </motion.div>
       </div>
     </section>
   );
