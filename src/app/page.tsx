@@ -1,78 +1,56 @@
 'use client'
-import { config } from "@/data/portfolio";
+import { useState, useEffect } from "react";
+import Hero from "@/components/sections/Hero";
+import SkillsNodes from "@/components/sections/SkillsNodes";
+import ExperienceGrid from "@/components/sections/ExperienceGrid";
+import Projects from "@/components/sections/Projects";
+import CredentialsCommunity from "@/components/sections/CredentialsCommunity";
 
 export default function Home() {
+  const [activeSection, setActiveSection] = useState("introduction");
+
+  // Smooth scroll handler for the right-side navigation
+  const scrollTo = (id: string) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+      setActiveSection(id);
+    }
+  };
+
   return (
-    <div className="min-h-screen flex flex-col md:flex-row max-w-6xl mx-auto px-6 py-12 md:py-24 gap-12">
+    <main className="min-h-screen bg-[#030712] text-gray-100 relative selection:bg-cyanNeon/30 overflow-x-hidden scroll-smooth">
+      {/* Decorative Background */}
+      <div className="fixed inset-0 pointer-events-none bg-[linear-gradient(to_right,rgba(255,255,255,0.012)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.012)_1px,transparent_1px)] bg-[size:4rem_4rem] z-0" />
       
-      {/* Left Column: System Identity (Fixed on Desktop) */}
-      <aside className="md:w-1/3 flex flex-col gap-8 md:sticky top-24 h-fit">
-        <div>
-          <h1 className="text-3xl font-bold text-white mb-2 tracking-tight">{config.identity.name}</h1>
-          <p className="text-sm text-zinc-400">{config.identity.role}</p>
-          <p className="text-sm text-zinc-500">@ {config.identity.company}</p>
-        </div>
+      {/* Right-Side Floating Navigation Menu */}
+      <div className="fixed right-4 top-1/2 -translate-y-1/2 z-50 hidden lg:flex flex-col gap-4 bg-gray-950/80 p-3 rounded-full border border-gray-800 backdrop-blur-md">
+        {[
+          { id: "introduction", label: "Intro" },
+          { id: "skills", label: "Skills" },
+          { id: "experience", label: "Experience" },
+          { id: "projects", label: "Projects" },
+          { id: "achievements", label: "Awards" }
+        ].map((item) => (
+          <button
+            key={item.id}
+            onClick={() => scrollTo(item.id)}
+            className={`w-3 h-3 rounded-full transition-all relative group ${activeSection === item.id ? "bg-cyanNeon scale-125 shadow-[0_0_10px_#0ea5e9]" : "bg-gray-600 hover:bg-gray-400"}`}
+          >
+            <span className="absolute right-6 top-1/2 -translate-y-1/2 px-2 py-1 bg-gray-900 border border-gray-700 text-[10px] font-mono rounded opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap text-white">
+              {item.label}
+            </span>
+          </button>
+        ))}
+      </div>
 
-        <div className="text-xs space-y-2 border-l border-zinc-800 pl-4">
-          <p className="text-white">STATUS: <span className="text-emerald-500">ONLINE</span></p>
-          <p>LOC: {config.identity.location}</p>
-          <p>EDU: {config.identity.education}</p>
-        </div>
-
-        <div className="flex flex-col gap-2 text-sm mt-8">
-          <a href={`mailto:${config.identity.email}`} className="text-zinc-400 hover:text-white transition-colors flex items-center gap-2">
-            <span className="text-zinc-600">&gt;</span> Email
-          </a>
-          <a href={`https://${config.identity.github}`} target="_blank" rel="noreferrer" className="text-zinc-400 hover:text-white transition-colors flex items-center gap-2">
-            <span className="text-zinc-600">&gt;</span> GitHub
-          </a>
-          <a href={`https://${config.identity.linkedin}`} target="_blank" rel="noreferrer" className="text-zinc-400 hover:text-white transition-colors flex items-center gap-2">
-            <span className="text-zinc-600">&gt;</span> LinkedIn
-          </a>
-        </div>
-      </aside>
-
-      {/* Right Column: Data Output Feed */}
-      <main className="md:w-2/3 flex flex-col gap-16">
-        
-        <section>
-          <h2 className="text-white text-sm font-bold border-b border-zinc-800 pb-2 mb-6 uppercase tracking-widest">~ / system_stack</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-            <div>
-              <h3 className="text-xs text-zinc-500 mb-3">INFRASTRUCTURE</h3>
-              <ul className="text-sm space-y-2 text-zinc-300">
-                {config.system_stack.infrastructure.map(item => <li key={item}>{item}</li>)}
-              </ul>
-            </div>
-            <div>
-              <h3 className="text-xs text-zinc-500 mb-3">AUTOMATION</h3>
-              <ul className="text-sm space-y-2 text-zinc-300">
-                {config.system_stack.automation.map(item => <li key={item}>{item}</li>)}
-              </ul>
-            </div>
-            <div>
-              <h3 className="text-xs text-zinc-500 mb-3">OBSERVABILITY</h3>
-              <ul className="text-sm space-y-2 text-zinc-300">
-                {config.system_stack.observability.map(item => <li key={item}>{item}</li>)}
-              </ul>
-            </div>
-          </div>
-        </section>
-
-        <section>
-          <h2 className="text-white text-sm font-bold border-b border-zinc-800 pb-2 mb-6 uppercase tracking-widest">~ / execution_logs</h2>
-          <div className="space-y-10">
-            {config.logs.map((log, i) => (
-              <div key={i} className="group">
-                <span className="text-xs text-zinc-600 font-mono mb-2 block">{log.timestamp}</span>
-                <h3 className="text-base text-zinc-200 mb-2 font-medium">{log.event}</h3>
-                <p className="text-sm text-zinc-400 leading-relaxed max-w-2xl">{log.details}</p>
-              </div>
-            ))}
-          </div>
-        </section>
-
-      </main>
-    </div>
+      <div className="relative z-10">
+        <div id="introduction"><Hero /></div>
+        <div id="skills"><SkillsNodes /></div>
+        <div id="experience"><ExperienceGrid /></div>
+        <div id="projects"><Projects /></div>
+        <div id="achievements"><CredentialsCommunity /></div>
+      </div>
+    </main>
   );
 }
