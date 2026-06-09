@@ -2,51 +2,61 @@
 import { motion } from "framer-motion";
 
 export default function Projects() {
-  const awardsList = [
-    { title: "HashiCorp Terraform Associate", desc: "Certified Infrastructure as Code Professional.", icon: "📜" },
-    { title: "WomenTech Network", desc: "Global Ambassador promoting women in technology.", icon: "🌍" },
-    { title: "IBM Mentor Badge", desc: "Mentored 35+ undergrads and junior engineers.", icon: "🤝" },
-    { title: "People's Choice Award", desc: "Jumpstart Programme Hackathon Winner.", icon: "🏆" },
-    { title: "CSR Volunteer Award 2024", desc: "Corporate Social Responsibility leader.", icon: "🌟" },
-    { title: "Encode (CS Club) & IEEE", desc: "General Secretary (Encode) & IEEE Treasurer.", icon: "🏛️" }
+  const projectsList = [
+    {
+      title: "AIOps Incident Response Assistant",
+      tech: ["Python", "LangChain", "OpenAI API", "CloudWatch", "Prometheus"],
+      date: "Feb 2026",
+      desc: "Built an AI-powered incident assistant that ingests alerts, auto-generates root cause summaries, and delivers remediation steps via Slack. Reduced MTTR by 40% via PagerDuty webhook automation."
+    },
+    {
+      title: "GitOps CI/CD Pipeline on EKS",
+      tech: ["Jenkins", "ArgoCD", "Docker", "AWS EKS", "ALB", "IRSA"],
+      date: "Aug 2025",
+      desc: "Designed multi-stage pipeline for automated builds. Implemented ArgoCD with sync policies, drift detection, and self-healing for pull-based GitOps deployments on Kubernetes."
+    },
+    {
+      title: "Kubernetes Monitoring on AWS EKS",
+      tech: ["AWS", "Kubernetes", "Helm", "Prometheus", "Grafana"],
+      date: "Jun 2025",
+      desc: "Engineered secure AWS EKS cluster with OIDC and IRSA. Reduced alert detection time by 30% by deploying custom observability dashboards via Helm."
+    }
   ];
 
   return (
-    <section className="py-24 max-w-6xl mx-auto px-4 border-t border-white/5">
-      <div className="mb-16">
-        <p className="text-sky-400 font-mono text-sm tracking-widest uppercase mb-2">Ecosystem & Awards</p>
-        <h2 className="text-3xl md:text-5xl font-black text-white tracking-tight">
-          Leadership, Community, & Certs.
-        </h2>
-      </div>
-
-      {/* Skills Matrix */}
-      <div className="mb-16 glass-bento p-8 rounded-3xl">
-        <h3 className="text-xl font-bold text-white mb-6">Technical Arsenal</h3>
-        <div className="flex flex-wrap gap-3">
-          {["Ansible", "GitOps", "ArgoCD", "Python", "Shell", "AWS", "Kubernetes", "Docker", "Terraform", "Grafana", "Prometheus", "Instana", "OpenShift", "Pandas", "NumPy", "scikit-learn"].map(skill => (
-            <span key={skill} className="px-4 py-2 bg-slate-800/80 border border-slate-700 rounded-xl text-sm font-mono text-sky-300 hover:bg-sky-900/30 hover:border-sky-500/50 transition-all cursor-default">
-              {skill}
-            </span>
-          ))}
+    <section className="py-24 max-w-5xl mx-auto px-4 border-b border-gray-900/50">
+      <div className="mb-12 text-left flex justify-between items-end">
+        <div>
+          <h2 className="text-3xl font-black text-white tracking-tight flex items-center gap-3">
+            <span className="text-cyanNeon font-mono text-xl">03.</span> Core Engineering Projects
+          </h2>
+          <p className="text-sm text-gray-400 mt-2">Production-grade systems from my GitHub & professional lab.</p>
         </div>
+        <a href="https://github.com/niza23" target="_blank" rel="noreferrer" className="text-xs font-mono text-cyanNeon hover:underline hidden md:block">
+          View all on GitHub &rarr;
+        </a>
       </div>
 
-      {/* Awards Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {awardsList.map((award, idx) => (
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {projectsList.map((project, idx) => (
           <motion.div
             key={idx}
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: idx * 0.1 }}
-            className="p-6 rounded-2xl bg-slate-900/40 border border-slate-800 hover:border-sky-500/30 transition-all text-left flex flex-col gap-3"
+            className="p-6 rounded-xl bg-gray-900/60 border border-gray-800 hover:border-cyanNeon transition-all text-left flex flex-col justify-between"
           >
-            <div className="text-3xl">{award.icon}</div>
             <div>
-              <h4 className="text-lg font-bold text-white mb-1">{award.title}</h4>
-              <p className="text-sm text-slate-400">{award.desc}</p>
+              <div className="text-[10px] text-gray-500 font-mono mb-3">{project.date}</div>
+              <h3 className="text-xl font-bold text-white mb-3">{project.title}</h3>
+              <p className="text-sm text-gray-400 mb-6 leading-relaxed">{project.desc}</p>
+            </div>
+            <div className="flex flex-wrap gap-2">
+              {project.tech.map((t, i) => (
+                <span key={i} className="text-[10px] font-mono px-2 py-1 bg-cyanNeon/10 text-cyanNeon rounded border border-cyanNeon/20">
+                  {t}
+                </span>
+              ))}
             </div>
           </motion.div>
         ))}
