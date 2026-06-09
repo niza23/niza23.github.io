@@ -10,10 +10,10 @@ export default function Hero() {
           <motion.div 
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
-            className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-gray-900/60 border border-gray-800 text-xs text-cyanNeon font-mono mb-6 backdrop-blur-md"
+            className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-gray-900/60 border border-gray-800 text-[10px] sm:text-xs text-cyanNeon font-mono mb-6 backdrop-blur-md whitespace-normal text-left"
           >
-            <span className="w-2 h-2 rounded-full bg-cyanNeon animate-pulse" />
-            Kubernetes & Cloud Infrastructure Node
+            <span className="w-2 h-2 rounded-full bg-cyanNeon animate-pulse shrink-0" />
+            SITE RELIABILITY ENGINEER @ IBM • PLATFORM ENGINEERING • CLOUD INFRASTRUCTURE
           </motion.div>
 
           <motion.h1 
@@ -22,9 +22,9 @@ export default function Hero() {
             transition={{ delay: 0.1 }}
             className="text-4xl md:text-6xl font-black tracking-tight text-white mb-6 leading-[1.15]"
           >
-            Hi, I'm Nidhi Zala.<br />
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-cyanNeon via-blue-400 to-indigo-500">
-              Site Reliability Engineer.
+            Nidhi Zala.<br />
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-cyanNeon via-blue-400 to-indigo-500 text-3xl md:text-5xl mt-2 block">
+              Building Reliable Cloud Platforms at Scale.
             </span>
           </motion.h1>
 
@@ -32,9 +32,11 @@ export default function Hero() {
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="text-base text-gray-400 mb-8 leading-relaxed max-w-xl"
+            className="text-base text-gray-400 mb-8 leading-relaxed max-w-xl space-y-3"
           >
-            Main production-grade cloud infrastructure (AWS) ko design, scale aur automate karti hu. Mera focus manual toil ko eliminate karna, Kubernetes clusters ko manage karna aur 99.9% uptime ensure karna hai. Let's build reliable systems together.
+            <span className="block">Site Reliability Engineer with 3+ years of experience designing, automating, and operating production cloud infrastructure at IBM.</span>
+            <span className="block">Specialized in Kubernetes, OpenShift, AWS, Infrastructure as Code, Observability, and Incident Response. Passionate about building scalable platforms, improving developer productivity, and enabling highly reliable systems through automation, GitOps, and cloud-native engineering practices.</span>
+            <span className="block">Currently focused on platform reliability, cloud infrastructure modernization, Kubernetes operations, cost optimization, and production excellence.</span>
           </motion.p>
 
           {/* Interactive Buttons */}
@@ -44,12 +46,11 @@ export default function Hero() {
             transition={{ delay: 0.3 }}
             className="flex flex-wrap gap-4 mb-10 w-full"
           >
-            {/* Interactive "Send me a message" Mailto Link */}
             <a href="mailto:nidhizala2307@gmail.com?subject=Hello%20Nidhi!&body=I%20saw%20your%20portfolio%20and%20would%20love%20to%20connect." 
                className="px-6 py-3 rounded-lg bg-cyanNeon text-white font-semibold text-sm hover:bg-cyanNeon/80 transition-all shadow-[0_0_15px_rgba(14,165,233,0.3)] flex items-center gap-2">
               <span>✉️</span> Send me a message
             </a>
-            <a href="https://www.linkedin.com/in/nidhi-zala-2307/" target="_blank" rel="noreferrer" 
+            <a href="https://linkedin.com/in/nidhi-zala-2307" target="_blank" rel="noreferrer" 
                className="px-6 py-3 rounded-lg bg-gray-900 border border-gray-700 text-white font-semibold text-sm hover:border-cyanNeon transition-all flex items-center gap-2">
               <span>💼</span> LinkedIn Profile
             </a>
@@ -70,8 +71,8 @@ export default function Hero() {
           >
              <div className="text-center p-6">
                 <div className="text-6xl mb-4 animate-bounce">☸️</div>
-                <h3 className="text-lg font-mono text-cyanNeon font-bold mb-2">Cluster Architecture</h3>
-                <p className="text-xs text-gray-500 font-mono">Automating AWS, EKS, and GitOps Workflows</p>
+                <h3 className="text-lg font-mono text-cyanNeon font-bold mb-2">Production Platform Architecture</h3>
+                <p className="text-xs text-gray-500 font-mono">Automating Kubernetes, AWS Infrastructure, Observability, and GitOps Workflows</p>
              </div>
           </motion.div>
         </div>
