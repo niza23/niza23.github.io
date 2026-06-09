@@ -1,84 +1,80 @@
 'use client'
 import { motion } from "framer-motion";
-import { portfolio } from "@/data/portfolio";
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex flex-col justify-center px-4 max-w-6xl mx-auto pt-24 pb-12 z-10">
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center w-full">
+    <section className="relative min-h-screen flex flex-col justify-center px-4 max-w-5xl mx-auto pt-20 pb-12">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center w-full">
         
-        {/* Left Content */}
-        <div className="flex flex-col items-start text-left relative z-20">
+        <div className="lg:col-span-7 flex flex-col items-start text-left">
           <motion.div 
-            initial={{ opacity: 0, y: -20 }}
+            initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-bento text-xs font-semibold text-sky-400 tracking-wide mb-8"
+            className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-gray-900/60 border border-gray-800 text-xs text-cyanNeon font-mono mb-6 backdrop-blur-md"
           >
-            <span className="w-2 h-2 rounded-full bg-sky-400 animate-pulse shadow-[0_0_10px_#38bdf8]" />
-            {portfolio.title} @ {portfolio.company}
+            <span className="w-2 h-2 rounded-full bg-cyanNeon animate-pulse" />
+            Kubernetes & Cloud Infrastructure Node
           </motion.div>
 
           <motion.h1 
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="text-5xl md:text-7xl font-extrabold tracking-tight text-white mb-6 leading-[1.1]"
+            className="text-4xl md:text-6xl font-black tracking-tight text-white mb-6 leading-[1.15]"
           >
-            {/* Using the exact tagline from the spec */}
-            {portfolio.tagline}
+            Hi, I'm Nidhi Zala.<br />
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-cyanNeon via-blue-400 to-indigo-500">
+              Site Reliability Engineer.
+            </span>
           </motion.h1>
 
           <motion.p 
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="text-lg text-slate-400 mb-10 leading-relaxed max-w-xl font-light"
+            className="text-base text-gray-400 mb-8 leading-relaxed max-w-xl"
           >
-            {portfolio.about}
+            Main production-grade cloud infrastructure (AWS) ko design, scale aur automate karti hu. Mera focus manual toil ko eliminate karna, Kubernetes clusters ko manage karna aur 99.9% uptime ensure karna hai. Let's build reliable systems together.
           </motion.p>
 
+          {/* Interactive Buttons */}
           <motion.div 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.3 }}
-            className="flex flex-wrap gap-4"
+            className="flex flex-wrap gap-4 mb-10 w-full"
           >
-            <a href={portfolio.assets.resume} target="_blank" rel="noreferrer"
-               className="px-8 py-3.5 rounded-xl bg-sky-500 text-white font-bold text-sm hover:bg-sky-400 transition-all shadow-[0_0_20px_rgba(56,189,248,0.4)]">
-              Download Resume
+            {/* Interactive "Send me a message" Mailto Link */}
+            <a href="mailto:nidhizala2307@gmail.com?subject=Hello%20Nidhi!&body=I%20saw%20your%20portfolio%20and%20would%20love%20to%20connect." 
+               className="px-6 py-3 rounded-lg bg-cyanNeon text-white font-semibold text-sm hover:bg-cyanNeon/80 transition-all shadow-[0_0_15px_rgba(14,165,233,0.3)] flex items-center gap-2">
+              <span>✉️</span> Send me a message
             </a>
-            <a href={`mailto:${portfolio.contact.email}`}
-               className="px-8 py-3.5 rounded-xl glass-bento text-white font-bold text-sm transition-all hover:-translate-y-1">
-              Contact Me
+            <a href="https://www.linkedin.com/in/nidhi-zala-2307/" target="_blank" rel="noreferrer" 
+               className="px-6 py-3 rounded-lg bg-gray-900 border border-gray-700 text-white font-semibold text-sm hover:border-cyanNeon transition-all flex items-center gap-2">
+              <span>💼</span> LinkedIn Profile
+            </a>
+            <a href="https://github.com/niza23" target="_blank" rel="noreferrer" 
+               className="px-6 py-3 rounded-lg bg-gray-900 border border-gray-700 text-white font-semibold text-sm hover:border-cyanNeon transition-all flex items-center gap-2">
+              <span>💻</span> GitHub
             </a>
           </motion.div>
         </div>
 
-        {/* Right Content - Profile Image Slot */}
-        <motion.div 
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 0.4, duration: 0.7 }}
-          className="relative w-full h-[400px] flex items-center justify-center group z-10"
-        >
-          <div className="absolute inset-0 bg-sky-500/20 rounded-full blur-[100px]" />
-          
-          <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-3xl overflow-hidden border-2 border-slate-700 shadow-[0_0_40px_rgba(0,0,0,0.5)] z-20 bg-slate-900 flex items-center justify-center group-hover:border-sky-400 transition-all">
-            {/* Fallback styling in case public/nidhi.jpg is not uploaded yet */}
-            <img 
-              src={portfolio.assets.photo} 
-              alt={portfolio.name}
-              onError={(e) => {
-                e.currentTarget.style.display = 'none';
-                e.currentTarget.parentElement?.classList.add('fallback-bg');
-              }}
-              className="w-full h-full object-cover"
-            />
-            <span className="absolute text-slate-500 font-mono text-xs text-center px-4 -z-10">
-              Place photo at: <br/> public/nidhi.jpg
-            </span>
-          </div>
-        </motion.div>
+        {/* Right Side Cloud Visual */}
+        <div className="lg:col-span-5 w-full flex justify-center">
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.3 }}
+            className="w-full max-w-sm aspect-square bg-gray-900/50 rounded-full border border-gray-800 flex items-center justify-center relative overflow-hidden shadow-[0_0_50px_rgba(14,165,233,0.1)]"
+          >
+             <div className="text-center p-6">
+                <div className="text-6xl mb-4 animate-bounce">☸️</div>
+                <h3 className="text-lg font-mono text-cyanNeon font-bold mb-2">Cluster Architecture</h3>
+                <p className="text-xs text-gray-500 font-mono">Automating AWS, EKS, and GitOps Workflows</p>
+             </div>
+          </motion.div>
+        </div>
       </div>
     </section>
   );
